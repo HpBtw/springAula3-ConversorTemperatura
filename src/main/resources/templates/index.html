@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form th:action="@{/converter}" method="post">
+        <label>Temperatura Celsius</label>
+        <input type="text" name="celsius" placeholder="Ex: 12.5" required>
+        <button type="submit">Converter</button>
+    </form>
+    <p th:if="${fahrenheit != null}">Temperatura convertida para Fahrenheit: <strong th:text="${fahrenheit}"></strong></p>
+</body>
+</html>
