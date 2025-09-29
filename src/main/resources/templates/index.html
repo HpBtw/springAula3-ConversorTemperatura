@@ -5,11 +5,42 @@
     <title>Title</title>
 </head>
 <body>
+    <h2>Converter Celsius para Fahrenheit</h2>
     <form th:action="@{/converter}" method="post">
         <label>Temperatura Celsius</label>
         <input type="text" name="celsius" placeholder="Ex: 12.5" required>
         <button type="submit">Converter</button>
     </form>
     <p th:if="${fahrenheit != null}">Temperatura convertida para Fahrenheit: <strong th:text="${fahrenheit}"></strong></p>
+
+    <h2>Somar</h2>
+    <form th:action="@{/somar}" method="post">
+        <label>Somar (Digite o X)</label>
+        <input type="text" name="x" placeholder="Ex: 1" required>
+        <label>Somar (Digite o Y)</label>
+        <input type="text" name="y" placeholder="Ex: 2" required>
+        <button type="submit">Somar</button>
+    </form>
+    <p th:if="${result != null}">Resultado da soma: <strong th:text="${result}"></strong></p>
+
+    <h2>Calculadora</h2>
+    <form th:action="@{/calculadora}" method="post">
+        <select name="op" required>
+            <option name="" disabled selected>Selecione a operação</option>
+            <option name="somar">Somar</option>
+            <option name="subtrair">Subtrair</option>
+            <option name="multiplicar">Multiplicar</option>
+            <option name="dividir">Dividir</option>
+        </select>
+
+        <label>Valor 1</label>
+        <input type="text" name="x" placeholder="Ex: 10" required>
+
+        <label>Valor 2</label>
+        <input type="text" name="y" placeholder="Ex: 20" required>
+
+        <button type="submit">Calcular</button>
+    </form>
+    <p th:if="${resultado != null}">Resultado: <strong th:text="${resultado}"></strong></p>
 </body>
 </html>
