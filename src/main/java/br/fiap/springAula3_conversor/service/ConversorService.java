@@ -15,7 +15,7 @@ public class ConversorService {
     public double somar(double x, double y) { return x + y; }
 
     public BigDecimal calcular(String x, String y, String op) {
-        BigDecimal v1 = toBigDecimal(x);
+        BigDecimal v1 = new BigDecimal(Double.valueOf(x));
         BigDecimal v2 = toBigDecimal(y);
     }
 }
