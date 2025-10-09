@@ -24,38 +24,22 @@ public class ConversorControle {
         return "index";
     }
 
-    @PostMapping("/somar")
-    public String somar(@RequestParam BigDecimal x, @RequestParam BigDecimal y, Model model) {
-        BigDecimal result = service.somar(x, y);
-        model.addAttribute("result", result);
-
-        return "index";
-    }
-
     @PostMapping("/calculadora")
-    public String calcular(@RequestParam String op, @RequestParam BigDecimal x, @RequestParam BigDecimal y, Model model) {
+    public String calculadora(@RequestParam String op,
+                              @RequestParam String x,
+                              @RequestParam String y,
+                              Model model) {
         BigDecimal resultado = null;
-        boolean valid = true;
+        String erro = "";
 
-        switch (op.toUpperCase()) {
-            case "SOMAR":
-                resultado = service.somar(x, y);
-                break;
-            case "SUBTRAIR":
-                resultado = service.subtrair(x, y);
-                break;
-            case "DIVIDIR":
-                if (y == 0) valid = false;
-                else resultado = service.dividir(x, y);
-                break;
-            case "MULTIPLICAR":
-                resultado = service.multiplicar(x, y);
-                break;
-            default:
-                valid = false;
-                break;
-        };
-        model.addAttribute("resultado", valid ? resultado : "Os dados fornecidos estão inválidos");
+        try {
+            resultado = service.calcular(x, y, op);
+        } catch (Exception e) {
+            erro = e.getMessage();
+        }
+        System.out.println("11111111111111");
+        model.addAttribute("resultado", resultado);
+        model.addAttribute("erro", erro);
         return "index";
     }
 }

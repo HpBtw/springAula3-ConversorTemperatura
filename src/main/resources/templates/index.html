@@ -40,7 +40,7 @@
         <input type="text" name="y" placeholder="Ex: 20" required>
 
         <button type="submit">Calcular</button>
+        <p th:if="${resultado != null}">Resultado: <strong th:text="${resultado}"></strong></p>
     </form>
-    <p th:if="${resultado != null}">Resultado: <strong th:text="${resultado}"></strong></p>
 </body>
 </html>
